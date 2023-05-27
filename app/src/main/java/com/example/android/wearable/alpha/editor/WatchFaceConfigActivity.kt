@@ -22,9 +22,6 @@ import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.android.wearable.alpha.data.watchface.ColorStyleIdAndResourceIds
 import com.example.android.wearable.alpha.databinding.ActivityWatchFaceConfigBinding
-import com.example.android.wearable.alpha.editor.WatchFaceConfigStateHolder.Companion.MINUTE_HAND_LENGTH_DEFAULT_FOR_SLIDER
-import com.example.android.wearable.alpha.editor.WatchFaceConfigStateHolder.Companion.MINUTE_HAND_LENGTH_MAXIMUM_FOR_SLIDER
-import com.example.android.wearable.alpha.editor.WatchFaceConfigStateHolder.Companion.MINUTE_HAND_LENGTH_MINIMUM_FOR_SLIDER
 import com.example.android.wearable.alpha.utils.LEFT_COMPLICATION_ID
 import com.example.android.wearable.alpha.utils.RIGHT_COMPLICATION_ID
 import kotlinx.coroutines.Dispatchers
@@ -58,11 +55,6 @@ class WatchFaceConfigActivity : ComponentActivity() {
         binding.ticksEnabledSwitch.isEnabled = false
         binding.minuteHandLengthSlider.isEnabled = false
 
-        // Set max and min.
-        binding.minuteHandLengthSlider.valueTo = MINUTE_HAND_LENGTH_MAXIMUM_FOR_SLIDER
-        binding.minuteHandLengthSlider.valueFrom = MINUTE_HAND_LENGTH_MINIMUM_FOR_SLIDER
-        binding.minuteHandLengthSlider.value = MINUTE_HAND_LENGTH_DEFAULT_FOR_SLIDER
-
         binding.minuteHandLengthSlider.addOnChangeListener { slider, value, fromUser ->
             Log.d(TAG, "addOnChangeListener(): $slider, $value, $fromUser")
             stateHolder.setMinuteHandArmLength(value)
@@ -75,10 +67,12 @@ class WatchFaceConfigActivity : ComponentActivity() {
                         is WatchFaceConfigStateHolder.EditWatchFaceUiState.Loading -> {
                             Log.d(TAG, "StateFlow Loading: ${uiState.message}")
                         }
+
                         is WatchFaceConfigStateHolder.EditWatchFaceUiState.Success -> {
                             Log.d(TAG, "StateFlow Success.")
                             updateWatchFacePreview(uiState.userStylesAndPreview)
                         }
+
                         is WatchFaceConfigStateHolder.EditWatchFaceUiState.Error -> {
                             Log.e(TAG, "Flow error: ${uiState.exception}")
                         }

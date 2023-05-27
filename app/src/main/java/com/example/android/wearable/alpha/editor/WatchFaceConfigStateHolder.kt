@@ -27,9 +27,6 @@ import androidx.wear.watchface.style.UserStyle
 import androidx.wear.watchface.style.UserStyleSchema
 import androidx.wear.watchface.style.UserStyleSetting
 import androidx.wear.watchface.style.WatchFaceLayer
-import com.example.android.wearable.alpha.data.watchface.MINUTE_HAND_LENGTH_FRACTION_DEFAULT
-import com.example.android.wearable.alpha.data.watchface.MINUTE_HAND_LENGTH_FRACTION_MAXIMUM
-import com.example.android.wearable.alpha.data.watchface.MINUTE_HAND_LENGTH_FRACTION_MINIMUM
 import com.example.android.wearable.alpha.utils.COLOR_STYLE_SETTING
 import com.example.android.wearable.alpha.utils.DRAW_HOUR_PIPS_STYLE_SETTING
 import com.example.android.wearable.alpha.utils.LEFT_COMPLICATION_ID
@@ -151,7 +148,7 @@ class WatchFaceConfigStateHolder(
             userStyle[drawPipsKey] as UserStyleSetting.BooleanUserStyleSetting.BooleanOption
         val minuteHandStyle =
             userStyle[minuteHandLengthKey]
-                as UserStyleSetting.DoubleRangeUserStyleSetting.DoubleRangeOption
+                    as UserStyleSetting.DoubleRangeUserStyleSetting.DoubleRangeOption
 
         Log.d(TAG, "/new values: $colorStyle, $ticksEnabledStyle, $minuteHandStyle")
 
@@ -168,9 +165,11 @@ class WatchFaceConfigStateHolder(
             LEFT_COMPLICATION_ID -> {
                 LEFT_COMPLICATION_ID
             }
+
             RIGHT_COMPLICATION_ID -> {
                 RIGHT_COMPLICATION_ID
             }
+
             else -> {
                 return
             }
@@ -256,15 +255,6 @@ class WatchFaceConfigStateHolder(
         // To convert the double representing the arm length to valid float value in the range the
         // slider can support, we need to multiply the original value times 1,000.
         private const val MULTIPLE_FOR_SLIDER: Float = 1000f
-
-        const val MINUTE_HAND_LENGTH_MINIMUM_FOR_SLIDER =
-            MINUTE_HAND_LENGTH_FRACTION_MINIMUM * MULTIPLE_FOR_SLIDER
-
-        const val MINUTE_HAND_LENGTH_MAXIMUM_FOR_SLIDER =
-            MINUTE_HAND_LENGTH_FRACTION_MAXIMUM * MULTIPLE_FOR_SLIDER
-
-        const val MINUTE_HAND_LENGTH_DEFAULT_FOR_SLIDER =
-            MINUTE_HAND_LENGTH_FRACTION_DEFAULT * MULTIPLE_FOR_SLIDER
 
         private fun multiplyByMultipleForSlider(lengthFraction: Double) =
             lengthFraction * MULTIPLE_FOR_SLIDER

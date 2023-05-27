@@ -21,10 +21,6 @@ import androidx.wear.watchface.style.UserStyleSetting
 import androidx.wear.watchface.style.WatchFaceLayer
 import com.example.android.wearable.alpha.R
 import com.example.android.wearable.alpha.data.watchface.ColorStyleIdAndResourceIds
-import com.example.android.wearable.alpha.data.watchface.DRAW_HOUR_PIPS_DEFAULT
-import com.example.android.wearable.alpha.data.watchface.MINUTE_HAND_LENGTH_FRACTION_DEFAULT
-import com.example.android.wearable.alpha.data.watchface.MINUTE_HAND_LENGTH_FRACTION_MAXIMUM
-import com.example.android.wearable.alpha.data.watchface.MINUTE_HAND_LENGTH_FRACTION_MINIMUM
 
 // Keys to matched content in the  the user style settings. We listen for changes to these
 // values in the renderer and if new, we will update the database and update the watch face
@@ -55,37 +51,10 @@ fun createUserStyleSchema(context: Context): UserStyleSchema {
             )
         )
 
-    // 2. Allows user to toggle on/off the hour pips (dashes around the outer edge of the watch
-    // face).
-    val drawHourPipsStyleSetting = UserStyleSetting.BooleanUserStyleSetting(
-        UserStyleSetting.Id(DRAW_HOUR_PIPS_STYLE_SETTING),
-        context.resources,
-        R.string.watchface_pips_setting,
-        R.string.watchface_pips_setting_description,
-        null,
-        listOf(WatchFaceLayer.BASE),
-        DRAW_HOUR_PIPS_DEFAULT
-    )
-
-    // 3. Allows user to change the length of the minute hand.
-    val watchHandLengthStyleSetting = UserStyleSetting.DoubleRangeUserStyleSetting(
-        UserStyleSetting.Id(WATCH_HAND_LENGTH_STYLE_SETTING),
-        context.resources,
-        R.string.watchface_hand_length_setting,
-        R.string.watchface_hand_length_setting_description,
-        null,
-        MINUTE_HAND_LENGTH_FRACTION_MINIMUM.toDouble(),
-        MINUTE_HAND_LENGTH_FRACTION_MAXIMUM.toDouble(),
-        listOf(WatchFaceLayer.COMPLICATIONS_OVERLAY),
-        MINUTE_HAND_LENGTH_FRACTION_DEFAULT.toDouble()
-    )
-
     // 4. Create style settings to hold all options.
     return UserStyleSchema(
         listOf(
             colorStyleSetting,
-            drawHourPipsStyleSetting,
-            watchHandLengthStyleSetting
         )
     )
 }

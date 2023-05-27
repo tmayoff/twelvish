@@ -30,7 +30,7 @@ import com.example.android.wearable.alpha.utils.createUserStyleSchema
 
 /**
  * Handles much of the boilerplate needed to implement a watch face (minus rendering code; see
- * [AnalogWatchCanvasRenderer]) including the complications and settings (styles user can change on
+ * [TwelvishWatchCanvasRenderer]) including the complications and settings (styles user can change on
  * the watch face).
  */
 class TwelvishWatchFaceService : WatchFaceService() {
@@ -57,7 +57,7 @@ class TwelvishWatchFaceService : WatchFaceService() {
         Log.d(TAG, "createWatchFace()")
 
         // Creates class that renders the watch face.
-        val renderer = AnalogWatchCanvasRenderer(
+        val renderer = TwelvishWatchCanvasRenderer(
             context = applicationContext,
             surfaceHolder = surfaceHolder,
             watchState = watchState,
