@@ -22,10 +22,10 @@ plugins {
 android {
     compileSdk 33
 
-    namespace "com.example.android.wearable.alpha"
+    namespace "com.tylermayoff.android.wearable.twelvish"
 
     defaultConfig {
-        applicationId "com.example.android.wearable.alpha"
+        applicationId "com.tylermayoff.android.wearable.twelvish"
         minSdk 28
         targetSdk 30
         versionCode 1
