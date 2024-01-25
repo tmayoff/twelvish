@@ -196,7 +196,7 @@ class TwelvishWatchCanvasRenderer(
             watchFaceColors.activeBackgroundColor
         }
 
-        canvas.drawColor(backgroundColor)
+        canvas.drawColor(Color.BLACK)
 
         var hour: Int = zonedDateTime.toLocalTime().hour
         if (hour > 12) hour -= 12
@@ -255,7 +255,7 @@ class TwelvishWatchCanvasRenderer(
 
             45 -> {
                 prefix = ""
-                postfix = "forty five "
+                postfix = " forty five "
             }
 
             in 46..59 -> {
